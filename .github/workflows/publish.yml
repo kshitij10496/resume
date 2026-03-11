@@ -1,0 +1,27 @@
+name: Publish Resume
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: typst-community/setup-typst@v4
+        with:
+          typst-version: latest
+
+      - name: Compile PDF
+        run: typst compile main.typ resume.pdf
+
+      - name: Upload to Google Drive
+        uses: mathisve/gdrive-upload-action@v4
+        with:
+          filename: resume.pdf
+          name: resume.pdf
+          folderId: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+          credentials: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          overwrite: true
