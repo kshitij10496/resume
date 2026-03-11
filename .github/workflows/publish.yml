@@ -18,7 +18,7 @@ jobs:
         run: typst compile main.typ resume.pdf
 
       - name: Upload to Google Drive
-        uses: mathisve/gdrive-upload-action@v4
+        uses: mathisve/gdrive-upload-action@main
         with:
           filename: resume.pdf
           name: resume.pdf
