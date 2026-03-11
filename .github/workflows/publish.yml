@@ -21,7 +21,8 @@ jobs:
         uses: mathisve/gdrive-upload-action@main
         with:
           filename: resume.pdf
-          name: resume.pdf
+          name: Resume_Kshitij.pdf
           folderId: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
           credentials: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           overwrite: true
+          encoded: true
